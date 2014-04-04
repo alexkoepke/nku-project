@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403184836) do
+ActiveRecord::Schema.define(version: 20140404151445) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "steam"
+    t.string   "playstation"
+    t.string   "xbox"
   end
 
 end

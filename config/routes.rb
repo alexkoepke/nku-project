@@ -5,7 +5,8 @@ NkuProject::Application.routes.draw do
   get "users/new"
 
   post 'login', to: "sessions#create"
-  post 'logout', to: "sessions#destroy"
+  get "sign_out", to: "sessions#destroy"
+  get "edit", to: "users#edit"
   
   resources :users
   resources :sessions

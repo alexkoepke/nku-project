@@ -1,5 +1,23 @@
-<div class="jumbotron">
-  <h1>Start Playing!</h1>
-  <p>Looking for people to play video games with?</p>
-  <p role="button"><%= link_to "Sign Up!", new_user_path, :class => "btn btn-primary btn-lg" %></p>
-</div>
+<% if current_user %>
+	<div class="jumbotron">
+	  <h1>Communities</h1>
+	  <p>Find or create a community!</p>
+	  <p role="button"><%= link_to "Browse", "#", :class => "btn btn-primary btn-lg" %></p>
+	</div>
+	<div class="jumbotron">
+	  <h1>Events</h1>
+	  <p>Find or create an event!</p>
+	  <p role="button"><%= link_to "Browse", "#", :class => "btn btn-primary btn-lg" %></p>
+	</div>
+	<div class="jumbotron">
+	  <h1>Games</h1>
+	  <p>See what people are playing!</p>
+	  <p role="button"><%= link_to "Browse", "#", :class => "btn btn-primary btn-lg" %></p>
+	</div>
+<% else %>
+	<div class="jumbotron">
+	  <h1>Start Playing!</h1>
+	  <p>Looking for people to play video games with?</p>
+	  <p role="button"><%= link_to "Sign Up!", new_user_path, :class => "btn btn-primary btn-lg" %></p>
+	</div>
+<% end %>

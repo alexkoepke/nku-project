@@ -24,6 +24,9 @@ class UsersController < ApplicationController
 
   def update
     current_user.update_attributes!(user_params)
+
+   # @user_handle_array = current_user.map{|u| [ u.steam, u.playstation, u.xbox ] }
+
     redirect_to root_path, notice: "Successfully updated your profile"
   end
 

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user].permit(:email, :password, :password_confirmation, :steam, :playstation, :xbox))
+    @user = User.new(params[:user].permit(:email, :password, :password_confirmation, :handle, :network))
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_url, notice: "Signed up!"
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   private
 	
   def user_params
-    	params.require(:user).permit(:email, :password, :password_confirmation, :steam, :playstation, :xbox)
+    	params.require(:user).permit(:email, :password, :password_confirmation, :handle, :network)
   end
 
 end

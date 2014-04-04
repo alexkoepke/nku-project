@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h1>Players Online</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Handle</th>
+      <th>Network</th>
+      <th>Game</th>
+      <th>Started Playing</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @joins.each do |join| %>
+      <tr id="<%= dom_id(join) %>">
+        <td><%= join.user.handle %></td>
+        <td><%= join.user.network %></td>
+        <td><%= join.game %></td>
+        <td><%= join.created_at.strftime("%H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

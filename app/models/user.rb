@@ -1,12 +1,14 @@
 class User < ActiveRecord::Base
+  has_many :joins
   has_secure_password
 
   #attr_accessible :email, :password, :password_confirmation
-  
+  validates :handle, presence: true
+  validates :network, presence: true
   validates :email, presence: true
   validates_uniqueness_of :email
 
-  
+
   # # attr_accessor :password
   # # before_save :encrypt_password
 

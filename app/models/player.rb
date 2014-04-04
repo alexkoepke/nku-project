@@ -1,4 +1,4 @@
-class Join < ActiveRecord::Base
+class Player < ActiveRecord::Base
   belongs_to :user
 
   validates :game, presence: true

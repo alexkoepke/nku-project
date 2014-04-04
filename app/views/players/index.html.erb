@@ -13,12 +13,12 @@
   </thead>
 
   <tbody>
-    <% @joins.each do |join| %>
-      <tr id="<%= dom_id(join) %>">
-        <td><%= join.user.handle %></td>
-        <td><%= join.user.network %></td>
-        <td><%= join.game %></td>
-        <td><%= join.created_at.strftime("%H:%M") %></td>
+    <% @players.each do |player| %>
+      <tr id="<%= dom_id(player) %>">
+        <td><%= player.user.handle %></td>
+        <td><%= player.user.network %></td>
+        <td><%= player.game %></td>
+        <td><%= player.created_at.strftime("%H:%M") %></td>
       </tr>
     <% end %>
   </tbody>

@@ -7,13 +7,13 @@ NkuProject::Application.routes.draw do
   post 'login', to: "sessions#create"
   get "sign_out", to: "sessions#destroy"
   get "edit", to: "users#edit"
-  get "players", to: "joins#index"
-  get "play_game", to: "joins#new"
+  get "players", to: "players#index"
+  get "play_game", to: "players#new"
 
   
   resources :users
   resources :sessions
-  resources :joins
+  resources :players
 
   root to: "welcome#index"
 

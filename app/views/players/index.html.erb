@@ -21,7 +21,7 @@
   <tbody>
   
     <% @players.each do |player| %>
-      <% if player.created_at > 1.hour.ago.utc %>
+      <% if player.created_at > 8.hour.ago.utc %>
         <tr id="<%= dom_id(player) %>">
           <td><%= player.user.handle %></td>
           <td><%= player.user.network %></td>

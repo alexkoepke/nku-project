@@ -18,17 +18,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Looking For Players</a>
+      <%= link_to "Looking For Players", root_path, :class => "navbar-brand" %>
 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Palyers Online", players_path %></li>
-        <li><%= link_to "Play Game", play_game_path %></li>
-
+        <% if current_user %>
+          <li><%= link_to "Players Online", players_path %></li>
+          <li><%= link_to "Play Game", play_game_path %></li>
+        <% else %>
+        <% end %>
       </ul>
       <div class="nav navbar-nav navbar-right">
         <div class="btn-group">

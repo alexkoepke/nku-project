@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player = current_user.players.build(join_params)
+    @player = current_user.players.build(player_params)
 
     if @player.save
       redirect_to players_path, notice: "You've joined the lobby!"
@@ -14,21 +14,30 @@ class PlayersController < ApplicationController
   end
 
   def index
-    if params[:user_id].present?
+
+    if params[:user_id]
       @players = User.find(params[:user_id]).players
     else
-      @players = Player.all
+      @players = Player.all(:order => "created_at DESC")
     end
   end
 
-  # def current_user
-  #   @current_user ||= User.find_by(id: session[:user_id]) # if session[:user_id].present?
+  def destroy
+    @player = current_user.players
+    @player.destroy_all
+
+    redirect_to players_path, notice: 'You are no longer playing'
+  end
+
+
+  # def current_player
+  #    @current_player ||= Player.find_by(id:) if session[:user_id].present?
   # end
-  # helper_method :current_user
+  # helper_method :current_player
 
   private
 
-  def join_params
+  def player_params
     params.require(:player).permit(:game)
   end
 end

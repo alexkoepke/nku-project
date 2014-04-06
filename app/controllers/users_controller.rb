@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
    # @user_handle_array = current_user.map{|u| [ u.steam, u.playstation, u.xbox ] }
 
-    redirect_to root_path, notice: "Successfully updated your profile"
+    redirect_to players_path, notice: "Successfully updated your profile"
   end
 
   def show

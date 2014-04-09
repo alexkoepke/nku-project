@@ -9,6 +9,7 @@ NkuProject::Application.routes.draw do
   get "edit", to: "users#edit"
   get "players", to: "players#index"
   get "play_game", to: "players#new"
+  get "done_playing", to: "players#destroy"
 
   
   resources :users

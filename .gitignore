@@ -16,4 +16,4 @@
 /tmp
 
 vendor/ruby
-config/environments/development.rb
+# config/environments/development.rb

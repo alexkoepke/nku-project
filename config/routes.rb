@@ -1,10 +1,11 @@
 NkuProject::Application.routes.draw do
  
+  devise_for :users
   get "welcome/index"
   get "sessions/new"
   get "users/new"
 
-  post 'login', to: "sessions#create"
+  # post 'login', to: "sessions#create"
   get "sign_out", to: "sessions#destroy"
   get "edit", to: "users#edit"
   get "players", to: "players#index"
@@ -16,6 +17,11 @@ NkuProject::Application.routes.draw do
   resources :sessions
   resources :players
 
-  root to: "welcome#index"
+  devise_scope :user do 
+    root to: 'welcome#index'
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
+
+  # root to: "welcome#index"
 
 end

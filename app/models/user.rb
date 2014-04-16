@@ -1,12 +1,15 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   has_many :players
-  has_secure_password
 
-  #attr_accessible :email, :password, :password_confirmation
+  #attr_accessible :email, :password, :password_confirmation, :handle, :network
   validates :handle, presence: true
   validates :network, presence: true
-  validates :email, presence: true
-  validates_uniqueness_of :email
+  #validates :email, presence: true
+  #validates_uniqueness_of :email
 
 
   # # attr_accessor :password

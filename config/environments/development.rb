@@ -27,7 +27,7 @@ NkuProject::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'sheltered-beach-2844.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'sheltered-beach-2844.herokuapp.heroku.com' }
 
   config.action_mailer.smtp_settings = {
      :address              => "smtp.gmail.com",

@@ -4,6 +4,7 @@ NkuProject::Application.routes.draw do
   get "welcome/index"
   get "sessions/new"
   get "users/new"
+  get "communities/index"
 
   # post 'login', to: "sessions#create"
   get "sign_out", to: "sessions#destroy"
@@ -12,10 +13,13 @@ NkuProject::Application.routes.draw do
   get "play_game", to: "players#new"
   get "done_playing", to: "players#destroy"
 
+
   
   resources :users
   resources :sessions
   resources :players
+  resources :communities
+
 
   devise_scope :user do 
     root to: 'welcome#index'

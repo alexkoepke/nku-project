@@ -2,8 +2,7 @@
   <%= form_for @player do |f| %>
     <% if @player.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@player.errors.count, "error") %> prohibited
-          you from joining:</h2>
+        <h2><%= pluralize(@player.errors.count, "error") %> prohibited you from joining:</h2>
         <ul>
         <% @player.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -13,9 +12,18 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label 'What are you playing today?' %>
-      <%= f.text_field :game, class: 'form-control' %>
+      <%= f.label 'What are you playing today?', class: "form-control" %>
+      <%= f.select :game, [['GTA: Online','GTA:_Online'],['Battlefield 3','Battlefield 3'],['Battlefile 4','Battlefile 4']] %>
     </div>
+    
+<!--     <select class="form-control">
+      <option value="one">One</option>
+      <option value="two">Two</option>
+      <option value="three">Three</option>
+      <option value="four">Four</option>
+      <option value="five">Five</option>
+    </select>
+ -->
 
     <%= f.submit "Play!", class: 'btn btn-primary' %>
   <% end %>

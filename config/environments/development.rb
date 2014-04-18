@@ -27,15 +27,15 @@ NkuProject::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  Rails.application.routes.default_url_options[:host] = '???'
+  # Rails.application.routes.default_url_options[:host] = '???'
   config.action_mailer.default_url_options = { host: 'sheltered-beach-2844.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
      :address              => "smtp.gmail.com",
      :port                 => 587,
      :domain               => 'gmail.com',
-     :user_name            => ENV['MAIL_USER_NAME'],
-     :password             => ENV['MAIL_PASSWORD'],
+     :user_name            => "ENV['MAIL_USER_NAME']",
+     :password             => "ENV['MAIL_PASSWORD']",
      :authentication       => :plain,
      :enable_starttls_auto => true  }
 end

@@ -34,6 +34,6 @@ NkuProject::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  Rails.application.routes.default_url_options[:host] = 'sheltered-beach-2844.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = '???'
 
 end

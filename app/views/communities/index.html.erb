@@ -1,1 +1,35 @@
-index.html.erb
+<div class="page-header">
+  <% if current_user %>
+  <!-- <div class="btn-group"> -->
+  	<h1>Create Community</h1><br>
+    <%= link_to "Play Game", play_game_path, :class => "btn btn-success" %>
+    <%= link_to "Stop Playing", done_playing_path(current_user), :class => "btn btn-danger" %>
+  <!-- </div> -->
+  <% else %>
+  <% end %>
+</div>
+
+<h1>Browse Community</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Community Name</th>
+      <th>Current # of Players</th>
+      <th>last player joined</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+    <% @communities.each do |commnity| %>
+        <tr id="<%= dom_id(commnity) %>">
+          <td><%= commnity.name %></td>
+          <td>5</td>
+          <td><%=#"#{time_ago_in_words(comunity.player.created_at)} ago"
+          %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

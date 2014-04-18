@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20140415210052) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "handle"
     t.string   "network"
   end

@@ -16,7 +16,7 @@
 
   <div class="form-group">
     <%= f.label :network, 'Network: '%>
-    <%= f.select :network, [['PSN','PSN'],['XBL','XBL'],['Steam','Steam']], class: 'form-control'  %>
+    <%= f.select :network, [['PSN','PSN'],['XBL','XBL'],['Steam','Steam']], {}, class: 'form-control' %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

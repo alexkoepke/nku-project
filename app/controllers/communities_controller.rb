@@ -9,17 +9,21 @@ class CommunitiesController < ApplicationController
   end
   
   def create
-    @communities = Community.new(params[:community].permit(:community_name, :community_description))
+    @communities = Community.new(params[:community].permit(:name, :description))
+
+    @communities.users << current_user
+
+
     if @communities.save
       session[:community_id] = @communities.id
-      redirect_to root_url, notice: "Signed up!"
+      redirect_to communities_path, notice: "Community Created!"
     else
       render "new"
     end
   end
 
   def edit
-    @communities = current_community
+    @communities = Community.find(params[:id])
   end
 
   def update
@@ -29,18 +33,25 @@ class CommunitiesController < ApplicationController
 
   def show
     @communities = Community.find(params[:id])
+
+    if params[:user_id]
+      @players = User.find(params[:user_id]).players
+    else
+      @players = Player.all(:order => "created_at DESC")
+    end
+
   end
 
   def current_community
-    @current_community ||= Community.find_by(id: session[:community_id]) # if session[:community_id].present?
+    @current_community = Community.find(params[:id])
   end
-  helper_method :current_community
+  #helper_method :current_community
   
 
   private
 	
   def community_params
-    	params.require(:community).permit(:community_name, :community_description)
+    	params.require(:community).permit(:name, :description)
   end
 
 

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :players
+  has_many :memberships
+  has_many :communities, :through => :memberships
 
   #attr_accessible :email, :password, :password_confirmation, :handle, :network
   validates :handle, presence: true

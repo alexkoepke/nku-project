@@ -1,0 +1,33 @@
+<h2>Edit</h2>
+<div class="row col-sm-4">
+
+<%= form_for @communities do |f| %>
+  <% if @communities.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @communities.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= f.label :name, 'Community Name' %><br />
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, 'Community Description' %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Update", class: 'form-control btn btn-primary' %>
+  </div>
+
+<% end %>
+
+</div>

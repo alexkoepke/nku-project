@@ -23,7 +23,7 @@ class CommunitiesController < ApplicationController
   end
 
   def edit
-    @communities = Community.find(params[:id])
+    @community = Community.find(params[:id])
   end
 
   def update
@@ -32,7 +32,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-    @communities = Community.find(params[:id])
+    @community = Community.find(params[:id])
 
     if params[:user_id]
       @players = User.find(params[:user_id]).players

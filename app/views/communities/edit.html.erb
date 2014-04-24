@@ -1,12 +1,12 @@
 <h2>Edit</h2>
 <div class="row col-sm-4">
 
-<%= form_for @communities do |f| %>
-  <% if @communities.errors.any? %>
+<%= form_for @community do |f| %>
+  <% if @community.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
       <ul>
-        <% for message in @communities.errors.full_messages %>
+        <% for message in @community.errors.full_messages %>
           <li><%= message %></li>
         <% end %>
       </ul>

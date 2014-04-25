@@ -28,7 +28,7 @@ class CommunitiesController < ApplicationController
 
   def update
     current_community.update_attributes!(community_params)
-    redirect_to root_path, notice: "Successfully updated your community"
+    redirect_to community_path, notice: "Successfully updated your community"
   end
 
   def show

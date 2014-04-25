@@ -21,11 +21,11 @@
 
   <tbody>
   
-    <% @communities.each do |commnity| %>
-        <tr id="<%= dom_id(commnity) %>">
-          <td><%= link_to commnity.name, commnity %></td>
+    <% @communities.each do |community| %>
+        <tr id="<%= dom_id(community) %>">
+          <td><%= link_to community.name, community %></td>
           <td>5</td>
-          <td><%=#"#{time_ago_in_words(comunity.player.created_at)} ago"
+          <td><%=#"#{time_ago_in_words(community.player.created_at)} ago"
           %>
           </td>
         </tr>

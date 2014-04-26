@@ -57,9 +57,9 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # def current_community
-  #   @current_community = Community.find(params[:id])
-  # end
+  def current_community
+    @current_community = Community.find(params[:id])
+  end
   #helper_method :current_community
   
 

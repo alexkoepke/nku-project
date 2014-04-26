@@ -4,7 +4,7 @@ class Community < ActiveRecord::Base
   has_many :player
   has_many :memberships
   has_many :users, :through => :memberships
-  validates :game, presence: true
+  #validates :game, presence: true
 
   # def self.recent_players
   #   Player.where("created_at >= ?", 8.hours.ago.utc).order("created_at DESC")

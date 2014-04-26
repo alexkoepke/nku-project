@@ -2,9 +2,9 @@ NkuProject::Application.routes.draw do
  
   devise_for :users, :controllers => { :passwords => "passwords" }
   get "welcome/index"
-  get "sessions/new"
-  get "users/new"
-  get "users/edit"
+  # get "sessions/new"
+  # get "users/new"
+  # get "users/edit"
   get "communities/index"
   get "communities/new"
   # get "communities/edit"

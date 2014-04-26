@@ -19,7 +19,6 @@
   <thead>
     <tr>
       <th>User Name</th>
-      <th>Network</th>
       <th>Game</th>
       <th>Started Playing</th>
     </tr>
@@ -30,8 +29,7 @@
     <% @community.player.each do |player| %>
       <% if player.created_at > 8.hour.ago.utc and player.user %>
         <tr id="<%= dom_id(player) %>">
-          <td><%= player.user.handle %></td>
-          <td><%= player.user.network %></td>
+          <td><%= player.user.handle %> on <%= player.user.network %></td>
           <td><%= player.game %></td>
           <td><%="#{time_ago_in_words(player.created_at)} ago"%>
           </td>

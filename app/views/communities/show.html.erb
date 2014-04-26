@@ -28,7 +28,7 @@
   <tbody>
   
     <% @community.player.each do |player| %>
-      <% if player.created_at > 8.hour.ago.utc %>
+      <% if player.created_at > 8.hour.ago.utc and player.user %>
         <tr id="<%= dom_id(player) %>">
           <td><%= player.user.handle %></td>
           <td><%= player.user.network %></td>

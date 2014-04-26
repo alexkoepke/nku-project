@@ -1,13 +1,17 @@
 class PlayersController < ApplicationController
   def new
-    @player = Player.new
+    @player = Player.new(community_id: params[:community_id])
   end
 
   def create
     @player = current_user.players.build(player_params)
 
     if @player.save
-      redirect_to players_path, notice: "You've joined the lobby!"
+      if @player.community_id != 'nill'
+        redirect_to community_path(@player.community), notice: "You've joined the lobby!"
+      else
+        redirect_to players_path, notice: "You've joined the lobby!"
+      end
     else
       render :new
     end
@@ -38,6 +42,6 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:game)
+    params.require(:player).permit(:game, :community_id)
   end
 end

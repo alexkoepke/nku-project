@@ -9,14 +9,14 @@ class CommunitiesController < ApplicationController
   end
   
   def create
-    @communities = Community.new(params[:community].permit(:name, :description))
+    @community = Community.new(params[:community].permit(:name, :description))
 
-    @communities.users << current_user
+    @community.users << current_user
 
 
-    if @communities.save
-      session[:community_id] = @communities.id
-      redirect_to communities_path, notice: "Community Created!"
+    if @community.save
+      session[:community_id] = @community.id
+      redirect_to community_path(@community), notice: "Community Created!"
     else
       render "new"
     end
@@ -42,16 +42,31 @@ class CommunitiesController < ApplicationController
 
   end
 
-  def current_community
-    @current_community = Community.find(params[:id])
+  # def newplayer
+  #   @player = Player.new
+  # end
+
+  def player
+    @community = Community.find(params[:id])
+    @player = current_user.players.build(community: @community)
+
+    if @player.save
+      redirect_to community_path(@player.community), notice: "You've joined the lobby!"
+    else
+      render :new
+    end
   end
+
+  # def current_community
+  #   @current_community = Community.find(params[:id])
+  # end
   #helper_method :current_community
   
 
   private
 	
   def community_params
-    	params.require(:community).permit(:name, :description)
+    	params.require(:community).permit!(:name, :description)
   end
 
 

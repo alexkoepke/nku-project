@@ -18,6 +18,7 @@ NkuProject::Application.routes.draw do
   get "create_community", to: "communities#new"
   # get "edit_community", to: "communities#edit"
   get "profile", to: "user#show"
+  get "start_playing/:id", to: "communities#player", as: "start_playing"
 
 
   
@@ -25,7 +26,9 @@ NkuProject::Application.routes.draw do
 
   resources :sessions
   resources :players
-  resources :communities
+  resources :communities do
+    resources :players
+  end
 
 
   devise_scope :user do 

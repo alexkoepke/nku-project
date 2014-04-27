@@ -16,6 +16,8 @@ class CommunitiesController < ApplicationController
 
     if @community.save
       session[:community_id] = @community.id
+      # @membership
+      # @membership.update_attributes(mod: "true")
       redirect_to community_path(@community), notice: "Community Created!"
     else
       render "new"
@@ -57,9 +59,9 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  def current_community
-    @current_community = Community.find(params[:id])
-  end
+  # def current_community
+  #   @current_community = Community.find(params[:id])
+  # end
   #helper_method :current_community
   
 

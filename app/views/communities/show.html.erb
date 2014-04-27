@@ -8,6 +8,7 @@
     <%= link_to "Play Game", new_community_player_path(@community), :class => "btn btn-success" %>
     <%= link_to "Stop Playing", done_playing_path(current_user), :class => "btn btn-danger" %>
     <%= link_to "Edit", edit_community_path(@community.id), :class => "btn btn-warning" %>
+ 
   <!-- </div> -->
   <% else %>
   <% end %>

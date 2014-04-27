@@ -9,38 +9,66 @@ class CommunitiesController < ApplicationController
   end
   
   def create
-    @communities = Community.new(params[:community].permit(:community_name, :community_description))
-    if @communities.save
-      session[:community_id] = @communities.id
-      redirect_to root_url, notice: "Signed up!"
+    @community = Community.new(params[:community].permit(:name, :description))
+
+    @community.users << current_user
+
+
+    if @community.save
+      session[:community_id] = @community.id
+      # @membership
+      # @membership.update_attributes(mod: "true")
+      redirect_to community_path(@community), notice: "Community Created!"
     else
       render "new"
     end
   end
 
   def edit
-    @communities = current_community
+    @community = Community.find(params[:id])
   end
 
   def update
     current_community.update_attributes!(community_params)
-    redirect_to root_path, notice: "Successfully updated your community"
+    redirect_to community_path, notice: "Successfully updated your community"
   end
 
   def show
-    @communities = Community.find(params[:id])
+    @community = Community.find(params[:id])
+
+    if params[:user_id]
+      @players = User.find(params[:user_id]).players
+    else
+      @players = Player.all(:order => "created_at DESC")
+    end
+
   end
 
-  def current_community
-    @current_community ||= Community.find_by(id: session[:community_id]) # if session[:community_id].present?
+  # def newplayer
+  #   @player = Player.new
+  # end
+
+  def player
+    @community = Community.find(params[:id])
+    @player = current_user.players.build(community: @community)
+
+    if @player.save
+      redirect_to community_path(@player.community), notice: "You've joined the lobby!"
+    else
+      render :new
+    end
   end
-  helper_method :current_community
+
+  # def current_community
+  #   @current_community = Community.find(params[:id])
+  # end
+  #helper_method :current_community
   
 
   private
 	
   def community_params
-    	params.require(:community).permit(:community_name, :community_description)
+    	params.require(:community).permit!(:name, :description)
   end
 
 

@@ -1,23 +1,35 @@
 <h1>Request to create a new community</h1>
 
-<%= form_for @community do |f| %>
-  <% if @community.errors.any? %>
+<%= form_for @communities do |f| %>
+  <% if @communities.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
       <ul>
-        <% for message in @community.errors.full_messages %>
+        <% for message in @communities.errors.full_messages %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.label :community_name %><br>
-    <%= f.text_field :community_name %>
-  </p>
-  <p>
-    <%= f.label :community_description %><br>
-    <%= f.text_area(:community_description, "Community description", size: "24x6") %>
-  </p>
-  <p class="button"><%= f.submit  "Send Request" %></p>
+  
+  <div class="row col-sm-4">
+    <div class="form-group">
+      <%= f.label :name, 'Community Name' %><br />
+      <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+    </div>
+ 
+  
+    <div class="form-group">
+      <%= f.label :description, 'Community Description' %>
+      <%= f.text_area(:description, size: "24x6", class: 'form-control') %>
+    </div>
+
+    
+  
+    <div class="form-group">
+      <%= f.submit "Update", class: 'form-control btn btn-primary' %>
+    </div>
+    
+  </div>
+
 <% end %>

@@ -15,9 +15,6 @@
       <%= f.label 'What are you playing today?', class: "form-control" %>
       <%= f.select :game, [['GTA Online','GTA Online'],['Battlefield 3','Battlefield 3'],['Battlefile 4','Battlefile 4']] %>
     </div>
-    <% if @player.community %>
-      <%= f.hidden_field :community_id, value: @player.community.id %>
-    <% end %>
     
 <!--     <select class="form-control">
       <option value="one">One</option>

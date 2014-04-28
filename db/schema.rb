@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426225141) do
+ActiveRecord::Schema.define(version: 20140427221646) do
 
   create_table "communities", force: true do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140426225141) do
     t.datetime "updated_at"
     t.string   "community_id"
     t.string   "user_id"
-    t.boolean  "moderator",    default: true
+    t.boolean  "moderator",    default: false
   end
 
   create_table "players", force: true do |t|

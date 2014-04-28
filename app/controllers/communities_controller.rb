@@ -10,14 +10,18 @@ class CommunitiesController < ApplicationController
   
   def create
     @community = Community.new(params[:community].permit(:name, :description))
-
     @community.users << current_user
+    
+    #@membership = @community.memberships#.new(params[:moderator])#.update_all(moderator: true)
+    #@membership.create!(moderator: true, status: "subscribed")
+
 
 
     if @community.save
       session[:community_id] = @community.id
-      # @membership
-      # @membership.update_attributes(mod: "true")
+      #session[:user_id] = @community.users
+      @community.memberships.create(user:params[:moderator], moderator:true)
+      #@community.memberships.create(user:params[:user_id], user_id: current_user.id)
       redirect_to community_path(@community), notice: "Community Created!"
     else
       render "new"
@@ -59,16 +63,16 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # def current_community
-  #   @current_community = Community.find(params[:id])
-  # end
+  def current_community
+    @current_community = Community.find(params[:id])
+  end
   #helper_method :current_community
   
 
   private
 	
   def community_params
-    	params.require(:community).permit!(:name, :description)
+    	params.require(:community).permit(:name, :description)
   end
 
 

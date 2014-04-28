@@ -20,7 +20,7 @@ class PlayersController < ApplicationController
   def index
 
     if params[:user_id]
-      @players = User.find(params[:user_id]).players
+      #@players = User.find(params[:user_id]).players
     else
       @players = Player.all(:order => "created_at DESC")
     end

@@ -1,6 +1,6 @@
 class Community < ActiveRecord::Base
   #belongs_to :user
-  has_many :room
+  # has_many :room
   has_many :player
   has_many :memberships
   has_many :users, :through => :memberships
